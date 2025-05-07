@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit Converter</h1>
+        <input type="number" id="inputValue" placeholder="Enter value">
+        <select id="conversionType">
+            <option value="metersToFeet">Meters to Feet</option>
+            <option value="feetToMeters">Feet to Meters</option>
+        </select>
+       button onclick="convert()">Convert</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function convert() {
+            const inputValue = document.getElementById('inputValue').value;
+            const conversionType = document.getElementById('conversionType').value;
+            let result;
+
+            if (conversionType === 'metersToFeet') {
+                result = inputValue * 3.28084;
+                document.getElementById('result').innerText = `${inputValue} Meters = ${result.toFixed(2)} Feet`;
+            } else if (conversionType === 'feetToMeters') {
+                result = inputValue / 3.28084;
+                document.getElementById('result').innerText = `${inputValue} Feet = ${result.toFixed(2)} Meters`;
+            } else {
+                document.getElementById('result').innerText = 'Invalid Conversion Type';
+            }
+        }
+    </script>
+</body>
+</html>
